@@ -10,7 +10,7 @@ subscriber.on('error', (error) => {
     console.log(`Redis client not connected to the server: ${error.message}`);
 });
 
-subscriber.subscribe('j')
+subscriber.subscribe('holberton school channel')
 
 subscriber.on('message', (channel, message) => {
     console.log(`${message}`);
