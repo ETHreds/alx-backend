@@ -5,7 +5,7 @@ const queue = kue.createQueue();
 
 // Object containing the Job data
 const jobData = {
-  phoneNumber: '0711185869',
+  phoneNumber: '071118586',
   message: 'Nipe Nigware'
 };
 
