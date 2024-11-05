@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-1-app.py - A basic Flask application with a single route
-Inatantiated with babel.
+2-app.py - A basic Flask application with a single route
+Instantiated with Babel.
 
 This module sets up a basic Flask application that displays a simple
 welcome message on the homepage.
 """
 
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 from flask_babel import Babel
 
 
@@ -22,7 +22,15 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 
-Babel(app)
+babel = Babel(app)  # Assign Babel instance to a variable
+
+
+@babel.localeselector
+def get_locale() -> str:
+    """Determine the best match for supported languages,
+    or fall back to default."""
+    return request.accept_languages.best_match(app.config["LANGUAGES"]) \
+    or app.config["BABEL_DEFAULT_LOCALE"]
 
 
 @app.route('/')
@@ -33,7 +41,7 @@ def index() -> str:
     Returns:
         str: The rendered HTML content of the index page.
     """
-    return render_template('1-index.html')
+    return render_template('2-index.html')
 
 
 if __name__ == '__main__':
