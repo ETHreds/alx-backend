@@ -29,8 +29,7 @@ babel = Babel(app)  # Assign Babel instance to a variable
 def get_locale() -> str:
     """Determine the best match for supported languages,
     or fall back to default."""
-    return request.accept_languages.best_match(app.config["LANGUAGES"]) \
-    or app.config["BABEL_DEFAULT_LOCALE"]
+    return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
 @app.route('/')
